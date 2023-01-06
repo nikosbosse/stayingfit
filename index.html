@@ -17,40 +17,6 @@
 </head>
 
 <body style="background-color: #2F4F4F;">
-  <!-- Navbar -->
-  <!--   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">My Website</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            More
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav> -->
-
 
   <!-- Add your HTML here -->
   <h1 style="text-align: center;">Staying fit for seniors</h1>
@@ -58,13 +24,10 @@
   <p style="text-align: center;">Stay fit with a random fitness video every day.</p>
 
   <!-- YouTube Embed -->
-  <div id="youtube-embed" style="text-align: center; margin-top: 20px;"">
-    <!--     <iframe width=" 560" height="315" src="https://www.youtube.com/embed/leD-ReJpXa0" frameborder="0"
-    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-  </div>
+  <div id="youtube-embed" style="text-align: center; margin-top: 20px;""> </div>
 
   <!-- YouTube URL Index -->
-  <div id="youtube-url-index" style="text-align: center; margin-top: 5px;"></div>
+  <div id=" youtube-url-index" style="text-align: center; margin-top: 5px;"></div>
 
   <!-- Workout Button -->
   <div style="text-align: center; margin-top: 20px;">
@@ -97,15 +60,7 @@
           return 'https://www.youtube.com/embed/' + videoId;
         });
 
-        // Display a random YouTube URL
-        var index = Math.floor(Math.random() * youtubeURLs.length);
-        $('#youtube-embed').html('<iframe width="560" height="315" src="' + youtubeURLs[index] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-
-        // Update YouTube URL index
-        $('#youtube-url-index').text('Video number ' + (index + 1) + ' / ' + youtubeURLs.length);
-
-        // Toggle YouTube Embed and Button Text
-        $('#workout-button').click(function () {
+        function updateRandomVideo() {
           // Display a random YouTube URL
           var index;
           do {
@@ -115,6 +70,37 @@
 
           // Update YouTube URL index
           $('#youtube-url-index').text('Video number ' + (index + 1) + ' / ' + youtubeURLs.length);
+        }
+
+        updateRandomVideo();
+
+
+
+
+
+
+
+
+        // // Display a random YouTube URL
+        // var index = Math.floor(Math.random() * youtubeURLs.length);
+        // $('#youtube-embed').html('<iframe width="560" height="315" src="' + youtubeURLs[index] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+
+        // // Update YouTube URL index
+        // $('#youtube-url-index').text('Video number ' + (index + 1) + ' / ' + youtubeURLs.length);
+
+        // Toggle YouTube Embed and Button Text
+        $('#workout-button').click(function () {
+          // Display a random YouTube URL
+          // var index;
+          // do {
+          //   index = Math.floor(Math.random() * youtubeURLs.length);
+          // } while (youtubeURLs[index] === $('#youtube-embed iframe').attr('src'));
+          // $('#youtube-embed').html('<iframe width="560" height="315" src="' + youtubeURLs[index] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+
+          // // Update YouTube URL index
+          // $('#youtube-url-index').text('Video number ' + (index + 1) + ' / ' + youtubeURLs.length);
+
+          updateRandomVideo();
         });
 
 
@@ -133,13 +119,6 @@
       }
     });
   </script>
-
-
-
-
-
-
-
 
   <!--Optional JavaScript-->
   <!--jQuery first, then Popper.js, then Bootstrap JS-->
