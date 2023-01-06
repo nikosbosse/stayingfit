@@ -1,4 +1,39 @@
-html, body {
-  height: 100%;
-  width: 100%;
+/* Change the color of the text */
+body {
+  color: white;
+}
+
+/* Change the background color of the page */
+body {
+  background-color: #2F4F4F;
+}
+
+/* Center the text on the page */
+h1, p {
+  text-align: center;
+}
+
+/* Add a border around the YouTube embed element */
+#youtube-embed {
+  border: 2px solid white;
+  background-color: black;
+}
+
+h1 {
+  font-weight: 800;
+  color: white;
+}
+
+p {
+  font-weight: 300;
+  color: white;
+}
+
+#youtube-url-index {
+  color: white;
+  font-size: 0.8em;
+}
+
+#video-select-form {
+  color: white;
 }

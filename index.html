@@ -6,6 +6,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <!--   Linke to CSS -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -21,16 +24,16 @@
   <!-- Add your HTML here -->
   <h1 style="text-align: center;">Staying fit for seniors</h1>
 
-  <p style="text-align: center;">Stay fit with a random fitness video every day.</p>
+  <p style="text-align: center; margin-top:25px;">Stay fit with a random fitness video every day.</p>
 
   <!-- YouTube Embed -->
-  <div id="youtube-embed" style="text-align: center; margin-top: 20px;""> </div>
+  <div id="youtube-embed" style="text-align: center; margin-top: 30px;""> </div>
 
   <!-- YouTube URL Index -->
-  <div id=" youtube-url-index" style="text-align: center; margin-top: 5px;"></div>
+  <div id= "youtube-url-index" style="text-align: center; margin-top: 5px;"></div>
 
   <!-- Workout Button -->
-  <div style="text-align: center; margin-top: 20px;">
+  <div style="text-align: center; margin-top: 30px;">
     <button id="workout-button" class="btn btn-primary">Different workout</button>
   </div>
 
@@ -60,59 +63,37 @@
           return 'https://www.youtube.com/embed/' + videoId;
         });
 
-        function updateRandomVideo() {
-          // Display a random YouTube URL
+
+        function getRandomIndex() {
           var index;
           do {
             index = Math.floor(Math.random() * youtubeURLs.length);
           } while (youtubeURLs[index] === $('#youtube-embed iframe').attr('src'));
-          $('#youtube-embed').html('<iframe width="560" height="315" src="' + youtubeURLs[index] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+          return index;
+        }
 
-          // Update YouTube URL index
+        function updateVideo(index) {
+          // Update video embed with index
+          $('#youtube-embed').html('<iframe width="560" height="315" src="' + youtubeURLs[index] + '" frameborder="0" display="block"; margin="0 auto"; allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+
+          // Update YouTube URL index in the field
           $('#youtube-url-index').text('Video number ' + (index + 1) + ' / ' + youtubeURLs.length);
         }
 
-        updateRandomVideo();
+        updateVideo(getRandomIndex());
 
-
-
-
-
-
-
-
-        // // Display a random YouTube URL
-        // var index = Math.floor(Math.random() * youtubeURLs.length);
-        // $('#youtube-embed').html('<iframe width="560" height="315" src="' + youtubeURLs[index] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-
-        // // Update YouTube URL index
-        // $('#youtube-url-index').text('Video number ' + (index + 1) + ' / ' + youtubeURLs.length);
-
-        // Toggle YouTube Embed and Button Text
+        // New video when clicking the button
         $('#workout-button').click(function () {
-          // Display a random YouTube URL
-          // var index;
-          // do {
-          //   index = Math.floor(Math.random() * youtubeURLs.length);
-          // } while (youtubeURLs[index] === $('#youtube-embed iframe').attr('src'));
-          // $('#youtube-embed').html('<iframe width="560" height="315" src="' + youtubeURLs[index] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-
-          // // Update YouTube URL index
-          // $('#youtube-url-index').text('Video number ' + (index + 1) + ' / ' + youtubeURLs.length);
-
-          updateRandomVideo();
+          updateVideo(getRandomIndex());
         });
 
-
+        // Get video when selecting manually
         $('#video-select-form').submit(function (event) {
           event.preventDefault();
 
           // Get selected video index
           var index = $('#video-index-input').val() - 1;
-
-          // Update YouTube embed with selected URL
-          $('#youtube-embed').html('<iframe width="560" height="315" src="' + youtubeURLs[index] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-
+          updateVideo(index);
           // Update YouTube URL index
           $('#youtube-url-index').text((index + 1) + ' / ' + youtubeURLs.length);
         });
