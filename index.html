@@ -16,9 +16,9 @@
   <title>Hello, world!</title>
 </head>
 
-<body>
+<body style="background-color: #2F4F4F;">
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!--   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">My Website</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,24 +49,34 @@
         </li>
       </ul>
     </div>
-  </nav>
+  </nav> -->
 
 
   <!-- Add your HTML here -->
+  <h1 style="text-align: center;">Staying fit for seniors</h1>
+
+  <p style="text-align: center;">Stay fit with a random fitness video every day.</p>
 
   <!-- YouTube Embed -->
-  <div id="youtube-embed">
-    <!--     <iframe width="560" height="315" src="https://www.youtube.com/embed/leD-ReJpXa0" frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+  <div id="youtube-embed" style="text-align: center; margin-top: 20px;"">
+    <!--     <iframe width=" 560" height="315" src="https://www.youtube.com/embed/leD-ReJpXa0" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
   </div>
 
   <!-- YouTube URL Index -->
-  <div id="youtube-url-index" style="text-align: center; margin-top: 20px;"></div>
+  <div id="youtube-url-index" style="text-align: center; margin-top: 5px;"></div>
 
   <!-- Workout Button -->
   <div style="text-align: center; margin-top: 20px;">
     <button id="workout-button" class="btn btn-primary">Different workout</button>
   </div>
+
+  <!--   Video selection field  -->
+  <form id="video-select-form" style="text-align: center; margin-top: 30px;">
+    <label for="video-index-input">Manual selection:</label>
+    <input type="number" style="width:50px" id="video-index-input" min="1" max="${youtubeURLs.length}">
+    <button type="submit" class="btn btn-primary">Select</button>
+  </form>
 
   <script>
     // Load YouTube URLs from videos.csv
@@ -105,6 +115,20 @@
 
           // Update YouTube URL index
           $('#youtube-url-index').text('Video number ' + (index + 1) + ' / ' + youtubeURLs.length);
+        });
+
+
+        $('#video-select-form').submit(function (event) {
+          event.preventDefault();
+
+          // Get selected video index
+          var index = $('#video-index-input').val() - 1;
+
+          // Update YouTube embed with selected URL
+          $('#youtube-embed').html('<iframe width="560" height="315" src="' + youtubeURLs[index] + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+
+          // Update YouTube URL index
+          $('#youtube-url-index').text((index + 1) + ' / ' + youtubeURLs.length);
         });
       }
     });
