@@ -40,20 +40,45 @@ p {
 
 
 .video-container {
-    position: relative;
-    margin: 20px;
-    padding-bottom: 56.25%;
-    padding-top: 0;
-    height: 0;
-    overflow: hidden;
+  display: block; 
+  justify-content: center; 
+  text-align: center; 
+  margin-top: 900px;
+  position: relative;
+  text-align: center;
+  display: block;
+  margin: 20px;
+  padding-bottom: 56.25%;
+  padding-top: 0;
+  height: 0;
+  overflow: hidden;
+  text-align: center;
+  position: center;
 }
 
 .video-container iframe,
 .video-container object,
 .video-container embed {
     position: absolute;
-    top: 0;
-    left: 0;
+    text-align: center;
+    display: block;
     width: 100%;
+    max-width: 100%;
     height: 100%;
+    max-height: 100%;
 }
+
+
+.video-wrap {
+        float: none;
+        clear: both;
+        width: 700px;
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 25px;
+        height: 0;
+        margin: 0 auto;
+        max-width: 100%;
+}
+
+
